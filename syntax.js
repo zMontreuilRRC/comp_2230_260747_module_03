@@ -44,6 +44,7 @@ function countToNumber(maxNumber) {
     //  i++: increment value by one
 
     try {
+        console.log(typeof(maxNumber));
         if(typeof(maxNumber) !== "number") {
             throw new Error("Must have number argument");
         }
