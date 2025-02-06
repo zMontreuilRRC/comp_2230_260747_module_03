@@ -1,21 +1,19 @@
-// step 1: select elements
-const submitNameNode = document.querySelector("#submit-name");
-const nameFieldNode = document.querySelector("#field-name");
-const changeNameParagraph = document.querySelector("p");
+// want to modify all of the LI elements in section-one
+const sectionOneNode = document.querySelector("#section-one");
 
-// step 2: respond to button click
-// using an anonymous function ( () => {} )
-submitNameNode.addEventListener("click", () => {
-    changeNameParagraph.textContent = `Welcome to the page, ${nameFieldNode.value}`;
-    nameFieldNode.value = "";
-});
+// elements can be accessed not just by using selectors, but also by "traversal"
+// we can access any node by using the relationships of other nodes
+// to modify section-two:
+const sectionTwoNode = sectionOneNode.nextElementSibling;
+const newParagraph = document.createElement("p");
+newParagraph.textContent = "Appended to sibling of sectionOneNode";
+sectionTwoNode.insertAdjacentElement("beforeend", newParagraph);
 
-function logEvent() {
-    console.log("Event occurred");
-}
+// modify sectionTwoNode's h2
+// list of children of sectionTwo
+const sectionTwoChildren = sectionTwoNode.childNodes;
+const sectionTwoHeader = sectionTwoChildren[1];
 
-// event listeners are special functions that tell DOM nodes to wait for something to happen
-// when that does happen, they invoke whatever function was provided to THEM
-// first argument: event type (string) DOMContentLoaded: page was loaded
-// second argument: function to invoke when that event occurs (callback function)
-// document.addEventListener("click", logEvent);
+// query selectors can be used on elements to ONLY get their children
+const allSectionTwoHeaders = sectionTwoNode.querySelectorAll("h2");
+console.log(allSectionTwoHeaders);
